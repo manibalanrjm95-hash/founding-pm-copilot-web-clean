@@ -22,3 +22,6 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .DS_Store
+
+# Backend (must never be inside frontend repo)
+founding-pm-copilot-server/
