@@ -1,19 +1,20 @@
-import { useEffect } from "react";
-import { API_BASE } from "../config/api";
+import { useEffect, useState } from "react";
+import { API_BASE_URL } from "../config/api";
 
 export default function Home() {
-    useEffect(() => {
-        console.log("API BASE:", API_BASE);
+    const [status, setStatus] = useState("checking...");
 
-        fetch(`${API_BASE}/health`)
+    useEffect(() => {
+        fetch(`${API_BASE_URL}/health`)
             .then((res) => res.json())
-            .then((data) => {
-                console.log("✅ Backend connected:", data);
-            })
-            .catch((err) => {
-                console.error("❌ Backend error:", err);
-            });
+            .then((data) => setStatus(data.status))
+            .catch(() => setStatus("backend error"));
     }, []);
 
-    return <h1>Home</h1>;
+    return (
+        <div>
+            <h1>Home</h1>
+            <p>Backend status: {status}</p>
+        </div>
+    );
 }
