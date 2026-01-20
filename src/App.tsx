@@ -1,9 +1,13 @@
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Agents from "./pages/Agents";
+
 function App() {
   return (
-    <div style={{ padding: 24 }}>
-      <h1>Founding PM Copilot</h1>
-      <p>Frontend is live.</p>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/agents" element={<Agents />} />
+    </Routes>
   );
 }
 
